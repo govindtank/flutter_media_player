@@ -2,19 +2,8 @@
 
 A Flutter app demonstrating multi-format media playback: **network audio**, **network video**, **YouTube videos**, and **YouTube Shorts**. Built with a clean provider architecture and Material 3 design.
 
-## Screenshots
-
-### Web - Audio Player
-![Audio Player](screenshots/home_audio.png)
-
-### Web - Video Player
-![Video Player](screenshots/home_video.png)
-
-### Web - YouTube Player
-![YouTube Player](screenshots/home_youtube.png)
-
-### Web - Shorts Feed
-![Shorts Feed](screenshots/home_shorts.png)
+## 🚀 Live Demo
+Try the web version directly: https://govindtank.github.io/flutter_media_player/
 
 ## Features
 
