@@ -1,4 +1,4 @@
-import 'package:audio_video_youtube_player/widgets/shorts_list.dart';
+import 'package:flutter_media_player/widgets/shorts_list.dart';
 import 'package:flutter/material.dart';
 
 class YoutubeShortsScreen extends StatelessWidget {

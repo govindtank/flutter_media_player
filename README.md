@@ -75,10 +75,10 @@ lib/
 
 ```bash
 # Clone the repo
-git clone https://github.com/govindtank/audio_video_youtube_player.git
+git clone https://github.com/govindtank/flutter_media_player.git
 
 # Navigate
-cd audio_video_youtube_player
+cd flutter_media_player
 
 # Install dependencies
 flutter pub get
@@ -109,7 +109,7 @@ flutter run -d web-server --web-port 8080
 
 ## Repo Name Suggestion
 
-The current repo name `audio_video_youtube_player` works, but for better discoverability and branding, consider:
+The current repo name `flutter_media_player` works, but for better discoverability and branding, consider:
 
 **`flutter_media_player`** or **`media_player_flutter`**
 

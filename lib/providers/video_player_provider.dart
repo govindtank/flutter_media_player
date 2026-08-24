@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:audio_video_youtube_player/models/media_item.dart';
-import 'package:audio_video_youtube_player/providers/media_player.dart';
+import 'package:flutter_media_player/models/media_item.dart';
+import 'package:flutter_media_player/providers/media_player.dart';
 import 'package:flutter/foundation.dart';
 import 'package:video_player/video_player.dart';
 

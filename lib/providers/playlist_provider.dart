@@ -1,4 +1,4 @@
-import 'package:audio_video_youtube_player/models/media_item.dart';
+import 'package:flutter_media_player/models/media_item.dart';
 import 'package:flutter/foundation.dart';
 
 enum PlaybackMode { off, repeatOne, repeatAll }

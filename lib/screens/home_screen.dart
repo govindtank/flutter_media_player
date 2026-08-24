@@ -1,8 +1,8 @@
-import 'package:audio_video_youtube_player/screens/youtube_shorts_screen.dart';
-import 'package:audio_video_youtube_player/widgets/audio_list.dart';
-import 'package:audio_video_youtube_player/widgets/mini_player.dart';
-import 'package:audio_video_youtube_player/widgets/video_list.dart';
-import 'package:audio_video_youtube_player/widgets/youtube_list.dart';
+import 'package:flutter_media_player/screens/youtube_shorts_screen.dart';
+import 'package:flutter_media_player/widgets/audio_list.dart';
+import 'package:flutter_media_player/widgets/mini_player.dart';
+import 'package:flutter_media_player/widgets/video_list.dart';
+import 'package:flutter_media_player/widgets/youtube_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:audio_video_youtube_player/models/media_item.dart';
-import 'package:audio_video_youtube_player/providers/audio_player_provider.dart';
-import 'package:audio_video_youtube_player/providers/video_player_provider.dart';
-import 'package:audio_video_youtube_player/providers/playlist_provider.dart';
+import 'package:flutter_media_player/models/media_item.dart';
+import 'package:flutter_media_player/providers/audio_player_provider.dart';
+import 'package:flutter_media_player/providers/video_player_provider.dart';
+import 'package:flutter_media_player/providers/playlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
