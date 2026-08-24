@@ -4,27 +4,24 @@ import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 class YoutubePlayerScreen extends StatelessWidget {
   final String videoId;
 
-  YoutubePlayerScreen({required this.videoId});
+  const YoutubePlayerScreen({super.key, required this.videoId});
 
   @override
   Widget build(BuildContext context) {
-    final YoutubePlayerController _controller = YoutubePlayerController(
-      initialVideoId: videoId,
-      params: YoutubePlayerParams(
-        autoPlay: true,
+    final controller = YoutubePlayerController(
+      params: const YoutubePlayerParams(
         showControls: true,
         showFullscreenButton: true,
       ),
-    );
+      key: videoId,
+    )..loadVideoById(videoId: videoId);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('YouTube Player'),
+        title: const Text('YouTube Player'),
       ),
       body: Center(
-        child: YoutubePlayerIFrame(
-          controller: _controller,
-        ),
+        child: YoutubePlayer(controller: controller),
       ),
     );
   }
