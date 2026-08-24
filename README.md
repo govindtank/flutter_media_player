@@ -1,6 +1,20 @@
-# Audio Video YouTube Player
+# Flutter Media Player
 
-A Flutter sample app demonstrating multi-format media playback: **local/network audio**, **network video**, **YouTube videos**, and **YouTube Shorts**. Built to validate cross-platform (mobile + web) media player behavior using a shared provider architecture.
+A Flutter app demonstrating multi-format media playback: **network audio**, **network video**, **YouTube videos**, and **YouTube Shorts**. Built with a clean provider architecture and Material 3 design.
+
+## Screenshots
+
+### Web - Audio Player
+![Audio Player](screenshots/home_audio.png)
+
+### Web - Video Player
+![Video Player](screenshots/home_video.png)
+
+### Web - YouTube Player
+![YouTube Player](screenshots/home_youtube.png)
+
+### Web - Shorts Feed
+![Shorts Feed](screenshots/home_shorts.png)
 
 ## Features
 
@@ -9,47 +23,53 @@ A Flutter sample app demonstrating multi-format media playback: **local/network 
 | Audio Player (MP3/stream) | `just_audio` | ✅ Working |
 | Video Player (MP4/network) | `video_player` | ✅ Working |
 | YouTube Video Player | `youtube_player_iframe` | ✅ Working |
-| YouTube Shorts | `youtube_player_iframe` + `tiktoklikescroller` | ⚠️ Partial |
+| YouTube Shorts | `youtube_player_iframe` | ✅ Working |
+| Seek bar + drag support | Custom widget | ✅ Working |
+| Playback speed control | Custom widget | ✅ Working |
+| Volume control | Custom widget | ✅ Working |
+| Queue / Playlist | `PlaylistProvider` | ✅ Working |
+| Mini player | Custom widget | ✅ Working |
 
 ## Architecture
 
 ```
 lib/
-├── main.dart                    # App entry, ChangeNotifier provider setup
+├── main.dart                    # App entry, MultiProvider setup
 ├── models/
 │   └── media_item.dart          # Media metadata model
 ├── providers/
-│   └── media_provider.dart      # Central playback state (audio + video)
+│   ├── media_player.dart        # Abstract base player interface
+│   ├── audio_player_provider.dart
+│   ├── video_player_provider.dart
+│   └── playlist_provider.dart   # Queue management
 ├── screens/
 │   ├── home_screen.dart         # Tab-based launcher
 │   ├── now_playing_screen.dart  # Expanded playback view
 │   ├── youtube_player_screen.dart
-│   ├── youtube_shorts_screen.dart
-│   ├── shorts_by_video_url.dart # Legacy/disabled code
-│   └── VideoListPage.dart       # Grid-based YouTube list
+│   └── youtube_shorts_screen.dart
 └── widgets/
     ├── mini_player.dart         # Bottom persistent player
     ├── audio_list.dart
     ├── video_list.dart
     ├── youtube_list.dart
-    └── shorts_list.dart         # Vertical swipe implementation
+    └── shorts_list.dart
 ```
 
 ### State Flow
 
 1. User taps a media item in a list widget.
-2. `MediaProvider.playMedia()` initializes the correct player (`just_audio` for audio, `VideoPlayerController` for video).
-3. `MiniPlayer` reacts via `Consumer<MediaProvider>`.
-4. Tapping `MiniPlayer` opens `NowPlayingScreen` for expanded controls.
+2. The appropriate provider loads media via `MediaPlayer` interface.
+3. `PlaylistProvider` manages queue state and navigation.
+4. `MiniPlayer` reacts via `Consumer<...>` and shows current track.
+5. Tapping `MiniPlayer` opens `NowPlayingScreen` for expanded controls.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Flutter SDK `>=3.4.0 <4.0.0`
-- Dart SDK `>=3.4.0`
-- For Android: API 21+
-- For iOS: iOS 12+
+- Flutter SDK `>=3.5.0 <4.0.0`
+- Dart SDK `>=3.5.0`
+- Chrome browser (for web)
 
 ### Installation
 
@@ -63,16 +83,11 @@ cd audio_video_youtube_player
 # Install dependencies
 flutter pub get
 
-# Run
-flutter run
-```
-
-### Web Support
-
-This project was originally validated on **Flutter Web**. The `CustomHttpOverrides` in `main.dart` disables certificate validation for development purposes only.
-
-```bash
+# Run on web
 flutter run -d chrome
+
+# Or run on web-server
+flutter run -d web-server --web-port 8080
 ```
 
 ## Dependencies
@@ -82,37 +97,33 @@ flutter run -d chrome
 | `provider` | State management |
 | `just_audio` | Audio playback engine |
 | `video_player` | Network video playback |
-| `youtube_player_iframe` | Web-view-based YouTube embed |
-| `audioplayers` | ⚠️ Redundant with `just_audio` |
-| `tiktoklikescroller` | Vertical swipe for Shorts UI |
-| `youtube_shorts` | ⚠️ Unused / experimental |
-| `video_shop_flutter` | ⚠️ Unused |
+| `youtube_player_iframe` | YouTube embed player |
 
-## Platform Setup
+## Tech Stack
 
-### Android
+- **Flutter 3.x+** with Material 3
+- **Provider** for state management
+- **just_audio** for audio playback
+- **video_player** for network video
+- **youtube_player_iframe** for YouTube integration
 
-No additional setup required. `INTERNET` permission is declared in `AndroidManifest.xml`.
+## Repo Name Suggestion
 
-### iOS
+The current repo name `audio_video_youtube_player` works, but for better discoverability and branding, consider:
 
-Standard Flutter iOS runner. No additional entitlements required for embedded YouTube playback via iframe.
+**`flutter_media_player`** or **`media_player_flutter`**
 
-### Web
+These names are:
+- Shorter and cleaner
+- More searchable on GitHub/pub.dev
+- Follow Flutter naming conventions
+- More professional for a portfolio project
 
-Works out of the box. The iframe YouTube player requires a web context.
-
-## Current Limitations
-
-- No seeking, duration, or progress indicators
-- No playlist/queue support
-- No error handling or loading states
-- No background audio support
-- Hardcoded sample URLs only
-- `MediaProvider` mixes audio/video state in a single class
-- Nested `MaterialApp` in `YoutubeShortsScreen`
-- Redundant `audioplayers` dependency alongside `just_audio`
-- Commented-out legacy code in `shorts_by_video_url.dart`
+If you want to rename, update:
+1. GitHub repo settings → Rename
+2. `pubspec.yaml` `name:` field
+3. All `import` statements if the package name changes
+4. `README.md` clone URL
 
 ## Roadmap
 
